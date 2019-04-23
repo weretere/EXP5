@@ -1,0 +1,31 @@
+This document is intended to explain the contribution to the Experiment 5 project. This work represents the bulk of my dissertation and has changed a great deal over the last 3 years. In this document I will list the scripts that are assets in the unity project and I will attribute credit to those who developed them. I will also attempt to explain the purpose of each of these scripts
+
+AccelerometerInput4.cs //this script was originally written by Miti Joshi while being managed by myself. The networking portion of this code was added to allow for very quick and dirty synchronization of the headset and an instance running on the desktop to allow for video capture.
+
+EnablerDisabler.cs //unused legacy code
+
+MainMenu.cs  //written and later rewritten by myself, this script is the workhorse of the main menu scene, this scene orignally took input from the user to select a mode of operation, but was later changed to use no input and to take the subject directly to a prechosen mode of operation
+
+MyNetworkServer.cs //written by myself, this script communicates with a vrpn server (myClient) run on a seperate desktop as well as the same instance running on the desktop (myClient2) as in the AccelerometerInput4 script, this is intended to be quick and dirty for video capture. This script also implements an algorithm for a process called resetting which allows unbounded exploration of a given environment in a bounded tracked space.
+
+NetworkControlCenter.cs //writen by myself, this script communicates with the control center scene in order to monitor progress during the testing phase of the experiment it uses udp communication to prevent the need for handshaking because reliably transferring information on every update isn't important.
+
+Phases.cs and SceneHandler.cs //written by Yuzhou Huang while being managed by myself, and later rewritten by myself, these scripts act as a scene management system for organizing the phases of the experiment, these scripts manage timing and transition between scenes appropriately.
+
+TrialMangaer.cs //written by Yuzhou Huang while being managed by myself, and later rewritten by myself, this script acts as one of the managers for the testing phase and aids the other manager in ordering the experiment
+
+ReorienterAndTester.cs //written by myself, this script acts as the other managers for the testing phase and controls the "computermover" gameobject, logs data, and moves the user through the experiment. This finite state machine communicates withthe networkcontrolcenter to keep the desktop networkcontrolcenter udpated. It also keeps the desktop based instance of the project updated for recording purposes. In general this script manages what parts of the scene the subject sees as perscribed by our methodology.
+
+TDServer.cs //written by myself, this script acts as support for mynetworkserver to properly transmit data between the headset and the intermediary server to the vrpn server
+
+UDPRecieve.cs //written by Taylor Smith and ultimately not used, this was a testing script that was removed in order to test how viable portability between networks could be
+
+VRPN.cs //not written at this lab, this is a C++ wrapper to communicate directly over vrpn
+
+VRPNClient.cs //written by myself for testing purposes early in development, no longer used
+
+VRPNServer.cs //written by myself, this script communicated with the vrpn server and acts as the intermediary server
+
+WaitForSecondsRealTimeOrMouseDown.cs //written as a quick hack to allow for advancement between scenes without the use of the timer, became neccesary for testing purposes and in the event the program had to be restarted
+
+ControlCenter.cs //written by myself, manages the desktop scene which controls and monitors the progress of the experiment
